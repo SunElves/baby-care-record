@@ -124,13 +124,13 @@
 
 1. **克隆项目**
 ```bash
-git clone https://github.com/yourusername/nuobao-feeding-record.git
-cd nuobao-feeding-record
+git clone https://github.com/SunElves/baby-care-record.git
+cd baby-care-record
 ```
 
 2. **安装依赖**
 ```bash
-cd client
+cd 开发版本/client
 npm install
 ```
 
@@ -208,114 +208,6 @@ client/
 ├── index.html               # HTML 模板
 ├── package.json             # 项目配置
 └── vite.config.js           # Vite 配置
-```
-
-### 数据结构设计
-
-#### 睡眠记录数据结构
-```javascript
-{
-  id: string,              // 记录ID
-  date: string,            // 日期 (YYYY-MM-DD)
-  startTime: string,       // 开始时间 (HH:mm)
-  endTime: string,         // 结束时间 (HH:mm)
-  duration: number,        // 时长（分钟）
-  quality: string,         // 质量 (excellent/good/normal/poor)
-  notes: string,           // 备注
-  recorder: string,        // 记录人员ID
-  createdAt: timestamp     // 创建时间
-}
-```
-
-#### 喂奶记录数据结构
-```javascript
-{
-  id: string,              // 记录ID
-  date: string,            // 日期 (YYYY-MM-DD)
-  time: string,            // 时间 (HH:mm)
-  type: string,            // 类型 (breast/formula)
-  amount: number,          // 喂奶量（ml）
-  notes: string,           // 备注
-  recorder: string,        // 记录人员ID
-  createdAt: timestamp     // 创建时间
-}
-```
-
-#### 辅食记录数据结构
-```javascript
-{
-  id: string,              // 记录ID
-  date: string,            // 日期 (YYYY-MM-DD)
-  time: string,            // 时间 (HH:mm)
-  type: string,            // 辅食类型
-  amount: number,          // 辅食量
-  notes: string,           // 备注
-  recorder: string,        // 记录人员ID
-  createdAt: timestamp     // 创建时间
-}
-```
-
-#### 换尿布记录数据结构
-```javascript
-{
-  id: string,              // 记录ID
-  date: string,            // 日期 (YYYY-MM-DD)
-  time: string,            // 时间 (HH:mm)
-  type: string,            // 类型 (stool/urine)
-  status: string,          // 状态
-  notes: string,           // 备注
-  recorder: string,        // 记录人员ID
-  createdAt: timestamp     // 创建时间
-}
-```
-
-#### 成长记录数据结构
-```javascript
-{
-  id: string,              // 记录ID
-  date: string,            // 日期 (YYYY-MM-DD)
-  height: number,          // 身高（cm）
-  weight: number,          // 体重（kg）
-  bmi: number,             // BMI指数
-  notes: string,           // 备注
-  recorder: string,        // 记录人员ID
-  createdAt: timestamp     // 创建时间
-}
-```
-
-#### 记录人员数据结构
-```javascript
-{
-  id: string,              // 人员ID
-  name: string,            // 姓名
-  avatar: string           // 头像emoji
-}
-```
-
-### 路由设计
-
-| 路径 | 名称 | 组件 | 描述 |
-|------|------|------|------|
-| `/` | home | Home.vue | 首页 |
-| `/dashboard` | dashboard | Dashboard.vue | 数据看板 |
-| `/sleep` | sleep | Sleep.vue | 睡眠记录 |
-| `/feeding` | feeding | Feeding.vue | 喂奶记录 |
-| `/solid-food` | solidFood | SolidFood.vue | 辅食记录 |
-| `/diaper` | diaper | Diaper.vue | 换尿布记录 |
-| `/growth` | growth | Growth.vue | 成长记录 |
-| `/data` | data | DataManagement.vue | 数据管理 |
-
-### 状态管理设计
-
-#### Recorder Store
-```javascript
-{
-  recorders: Array,        // 记录人员列表
-  currentRecorder: Object, // 当前选中的记录人员
-  setRecorder: Function,   // 切换记录人员
-  getRecorderById: Function, // 根据ID获取记录人员
-  initRecorder: Function   // 初始化记录人员
-}
 ```
 
 ---
