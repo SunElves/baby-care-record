@@ -1,0 +1,491 @@
+# 糯宝喂养记录系统
+
+<p align="center">
+  <img src="client/src/assets/logo.ico" alt="糯宝喂养记录" width="120">
+</p>
+
+<p align="center">
+  一款专为新手父母设计的宝宝喂养记录系统，帮助您轻松记录和管理宝宝的日常喂养、睡眠、成长等数据
+</p>
+
+<p align="center">
+  <a href="#功能特性">功能特性</a> •
+  <a href="#技术栈">技术栈</a> •
+  <a href="#快速开始">快速开始</a> •
+  <a href="#系统设计">系统设计</a> •
+  <a href="#使用指南">使用指南</a>
+</p>
+
+---
+
+## 📖 项目简介
+
+糯宝喂养记录系统是一款基于 Vue 3 开发的现代化 Web 应用，旨在帮助新手父母轻松记录和管理宝宝的日常喂养、睡眠、换尿布、成长等数据。系统提供了直观的数据可视化和统计分析功能，让父母能够全面了解宝宝的成长状况。
+
+### 🎯 设计目标
+
+- **简单易用**：直观的界面设计，无需学习即可上手
+- **数据可视化**：通过图表直观展示宝宝的数据趋势
+- **响应式设计**：完美适配移动端和桌面端
+- **数据安全**：数据存储在本地，保护隐私
+- **多人协作**：支持多位家庭成员共同记录
+
+---
+
+## ✨ 功能特性
+
+### 📊 数据看板
+- 今日概览：睡眠总时长、喂奶总量、换尿布次数
+- 睡眠趋势图：近7天睡眠时长趋势分析
+- 睡眠质量分布：优秀/良好/一般/较差统计
+- 喂奶类型分布：母乳/配方奶比例
+- 辅食类型分布：不同辅食类型统计
+- 成长趋势图：身高体重双Y轴趋势
+- 尿布类型分布：大便/小便比例
+
+### 😴 睡眠记录
+- 记录睡眠开始时间和结束时间
+- 自动计算睡眠时长
+- 睡眠质量评估（优秀/良好/一般/较差）
+- 睡眠备注功能
+- 按日期查看历史记录
+
+### 🍼 喂奶记录
+- 支持母乳和配方奶两种类型
+- 记录喂奶时间和喂奶量
+- 自动统计每日喂奶总量
+- 喂奶次数统计
+- 按日期查看历史记录
+
+### 🥣 辅食记录
+- 记录辅食类型（米糊、果泥、蔬菜泥等）
+- 记录辅食量和喂食时间
+- 辅食摄入量统计
+- 按日期查看历史记录
+
+### 👶 换尿布记录
+- 记录尿布类型（大便/小便）
+- 记录换尿布时间
+- 尿布状态备注
+- 按日期查看历史记录
+
+### 📏 成长记录
+- 记录身高、体重数据
+- 自动计算 BMI 指数
+- 成长趋势可视化
+- 按日期查看历史记录
+
+### 👥 记录人员管理
+- 支持多位家庭成员共同记录
+- 预设人员：爸爸、妈妈、爷爷、奶奶、姥爷、姥姥、阿姨
+- 记录人员状态持久化
+- 快速切换记录人员
+
+### 💾 数据管理
+- 数据导出为 JSON 格式
+- 数据清空功能
+- 数据本地存储
+- 数据统计概览
+
+---
+
+## 🛠 技术栈
+
+### 前端框架
+- **Vue 3** - 渐进式 JavaScript 框架
+- **Vite** - 下一代前端构建工具
+- **Vue Router** - Vue.js 官方路由
+
+### UI 组件库
+- **Element Plus** - 基于 Vue 3 的组件库
+
+### 数据可视化
+- **ECharts** - 强大的数据可视化库
+- **vue-echarts** - ECharts 的 Vue 封装
+
+### 状态管理
+- **Pinia** - Vue 3 官方状态管理库
+
+### 样式
+- **SCSS** - CSS 预处理器
+
+### 数据存储
+- **LocalStorage** - 浏览器本地存储
+
+---
+
+## 🚀 快速开始
+
+### 环境要求
+- Node.js >= 16.0.0
+- npm >= 7.0.0
+
+### 安装步骤
+
+1. **克隆项目**
+```bash
+git clone https://github.com/yourusername/nuobao-feeding-record.git
+cd nuobao-feeding-record
+```
+
+2. **安装依赖**
+```bash
+cd client
+npm install
+```
+
+3. **启动开发服务器**
+```bash
+npm run dev
+```
+
+4. **访问应用**
+打开浏览器访问 `http://localhost:7788`
+
+### 构建生产版本
+
+```bash
+npm run build
+```
+
+---
+
+## 🏗 系统设计
+
+### 系统架构
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                        前端应用                          │
+├─────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐    │
+│  │   视图层     │  │   路由层     │  │   状态层     │    │
+│  │  (Views)    │  │  (Router)   │  │  (Pinia)    │    │
+│  └─────────────┘  └─────────────┘  └─────────────┘    │
+├─────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐    │
+│  │  组件层     │  │   工具层     │  │   样式层     │    │
+│  │(Components) │  │  (Utils)    │  │  (Styles)   │    │
+│  └─────────────┘  └─────────────┘  └─────────────┘    │
+├─────────────────────────────────────────────────────────┤
+│                    数据存储层 (LocalStorage)             │
+└─────────────────────────────────────────────────────────┘
+```
+
+### 目录结构
+
+```
+client/
+├── src/
+│   ├── assets/              # 静态资源
+│   │   └── logo.ico        # 应用图标
+│   ├── components/          # 公共组件
+│   │   ├── FixedRecorderSelector.vue  # 固定定位的记录人员选择器
+│   │   ├── Navigation.vue             # 导航组件
+│   │   └── RecorderSelector.vue       # 记录人员选择器
+│   ├── router/              # 路由配置
+│   │   └── index.js        # 路由定义
+│   ├── stores/              # 状态管理
+│   │   └── recorder.js     # 记录人员状态
+│   ├── styles/              # 全局样式
+│   │   └── global.scss     # 全局样式文件
+│   ├── utils/               # 工具函数
+│   │   ├── dashboardData.js # 看板数据处理
+│   │   └── exportData.js    # 数据导出工具
+│   ├── views/               # 页面视图
+│   │   ├── Dashboard.vue    # 数据看板
+│   │   ├── DataManagement.vue # 数据管理
+│   │   ├── Diaper.vue       # 换尿布记录
+│   │   ├── Feeding.vue      # 喂奶记录
+│   │   ├── Growth.vue       # 成长记录
+│   │   ├── Home.vue         # 首页
+│   │   ├── Sleep.vue        # 睡眠记录
+│   │   └── SolidFood.vue    # 辅食记录
+│   ├── App.vue              # 根组件
+│   ├── main.js              # 入口文件
+│   └── style.css            # 全局样式
+├── public/                  # 公共资源
+├── index.html               # HTML 模板
+├── package.json             # 项目配置
+└── vite.config.js           # Vite 配置
+```
+
+### 数据结构设计
+
+#### 睡眠记录数据结构
+```javascript
+{
+  id: string,              // 记录ID
+  date: string,            // 日期 (YYYY-MM-DD)
+  startTime: string,       // 开始时间 (HH:mm)
+  endTime: string,         // 结束时间 (HH:mm)
+  duration: number,        // 时长（分钟）
+  quality: string,         // 质量 (excellent/good/normal/poor)
+  notes: string,           // 备注
+  recorder: string,        // 记录人员ID
+  createdAt: timestamp     // 创建时间
+}
+```
+
+#### 喂奶记录数据结构
+```javascript
+{
+  id: string,              // 记录ID
+  date: string,            // 日期 (YYYY-MM-DD)
+  time: string,            // 时间 (HH:mm)
+  type: string,            // 类型 (breast/formula)
+  amount: number,          // 喂奶量（ml）
+  notes: string,           // 备注
+  recorder: string,        // 记录人员ID
+  createdAt: timestamp     // 创建时间
+}
+```
+
+#### 辅食记录数据结构
+```javascript
+{
+  id: string,              // 记录ID
+  date: string,            // 日期 (YYYY-MM-DD)
+  time: string,            // 时间 (HH:mm)
+  type: string,            // 辅食类型
+  amount: number,          // 辅食量
+  notes: string,           // 备注
+  recorder: string,        // 记录人员ID
+  createdAt: timestamp     // 创建时间
+}
+```
+
+#### 换尿布记录数据结构
+```javascript
+{
+  id: string,              // 记录ID
+  date: string,            // 日期 (YYYY-MM-DD)
+  time: string,            // 时间 (HH:mm)
+  type: string,            // 类型 (stool/urine)
+  status: string,          // 状态
+  notes: string,           // 备注
+  recorder: string,        // 记录人员ID
+  createdAt: timestamp     // 创建时间
+}
+```
+
+#### 成长记录数据结构
+```javascript
+{
+  id: string,              // 记录ID
+  date: string,            // 日期 (YYYY-MM-DD)
+  height: number,          // 身高（cm）
+  weight: number,          // 体重（kg）
+  bmi: number,             // BMI指数
+  notes: string,           // 备注
+  recorder: string,        // 记录人员ID
+  createdAt: timestamp     // 创建时间
+}
+```
+
+#### 记录人员数据结构
+```javascript
+{
+  id: string,              // 人员ID
+  name: string,            // 姓名
+  avatar: string           // 头像emoji
+}
+```
+
+### 路由设计
+
+| 路径 | 名称 | 组件 | 描述 |
+|------|------|------|------|
+| `/` | home | Home.vue | 首页 |
+| `/dashboard` | dashboard | Dashboard.vue | 数据看板 |
+| `/sleep` | sleep | Sleep.vue | 睡眠记录 |
+| `/feeding` | feeding | Feeding.vue | 喂奶记录 |
+| `/solid-food` | solidFood | SolidFood.vue | 辅食记录 |
+| `/diaper` | diaper | Diaper.vue | 换尿布记录 |
+| `/growth` | growth | Growth.vue | 成长记录 |
+| `/data` | data | DataManagement.vue | 数据管理 |
+
+### 状态管理设计
+
+#### Recorder Store
+```javascript
+{
+  recorders: Array,        // 记录人员列表
+  currentRecorder: Object, // 当前选中的记录人员
+  setRecorder: Function,   // 切换记录人员
+  getRecorderById: Function, // 根据ID获取记录人员
+  initRecorder: Function   // 初始化记录人员
+}
+```
+
+---
+
+## 📱 使用指南
+
+### 基本操作流程
+
+1. **选择记录人员**
+   - 在页面右上角选择当前记录人员
+   - 系统会记住上次选择的人员
+
+2. **添加记录**
+   - 点击对应的记录卡片进入记录页面
+   - 填写相关信息
+   - 点击保存按钮
+
+3. **查看数据**
+   - 点击"数据看板"查看统计图表
+   - 在各记录页面查看历史记录
+
+4. **数据管理**
+   - 点击"数据管理"进入管理页面
+   - 可以导出或清空数据
+
+### 移动端适配
+
+系统采用响应式设计，完美适配移动端：
+- 底部导航栏方便单手操作
+- 图表自适应屏幕宽度
+- 表单优化触摸操作
+
+---
+
+## 🎨 界面设计
+
+### 设计原则
+
+1. **简洁直观**：采用卡片式布局，信息层次清晰
+2. **温馨舒适**：使用柔和的色彩搭配，营造温馨氛围
+3. **响应式设计**：适配各种屏幕尺寸
+4. **毛玻璃效果**：现代化的视觉体验
+
+### 色彩方案
+
+- **主色调**：#f8961e（橙色）- 温暖、活力
+- **背景色**：#f8f5f0（米色）- 温馨、舒适
+- **辅助色**：
+  - 睡眠：#f8961e（橙色）
+  - 喂奶：#1890ff（蓝色）
+  - 辅食：#52c41a（绿色）
+  - 尿布：#8b4513（棕色）
+  - 成长：#4cc9f0（青色）
+
+---
+
+## 📊 数据可视化
+
+### 图表类型
+
+1. **折线图**
+   - 睡眠趋势：展示近7天睡眠时长变化
+   - 成长趋势：展示身高体重变化
+
+2. **饼图**
+   - 睡眠质量分布
+   - 喂奶类型分布
+   - 辅食类型分布
+   - 尿布类型分布
+
+### 数据统计
+
+- 今日概览：实时统计当日数据
+- 趋势分析：展示数据变化趋势
+- 分布统计：展示数据分布情况
+
+---
+
+## 🔒 数据安全
+
+### 本地存储
+
+所有数据存储在浏览器的 LocalStorage 中：
+- 数据完全由用户控制
+- 不会上传到服务器
+- 保护用户隐私
+
+### 数据导出
+
+支持将数据导出为 JSON 格式：
+- 方便数据备份
+- 支持数据迁移
+- 数据格式清晰
+
+---
+
+## 🌟 特色功能
+
+### 1. 多人协作
+支持多位家庭成员共同记录，清晰记录每次操作的人员。
+
+### 2. 智能统计
+自动计算睡眠时长、BMI指数等数据，减少手动计算。
+
+### 3. 数据可视化
+通过图表直观展示数据趋势，帮助父母了解宝宝成长状况。
+
+### 4. 响应式设计
+完美适配移动端和桌面端，随时随地记录数据。
+
+### 5. 状态持久化
+记录人员选择状态自动保存，刷新页面不丢失。
+
+---
+
+## 📈 性能优化
+
+1. **按需加载**：路由懒加载，减少首屏加载时间
+2. **组件优化**：使用 Composition API，提高代码复用性
+3. **图表优化**：ECharts 按需导入，减少包体积
+4. **缓存策略**：合理使用 LocalStorage，提高数据访问速度
+
+---
+
+## 🔮 未来规划
+
+- [ ] 添加数据同步功能
+- [ ] 支持多宝宝管理
+- [ ] 添加提醒功能
+- [ ] 支持数据导入
+- [ ] 添加更多统计维度
+- [ ] 支持自定义记录人员
+- [ ] 添加数据分享功能
+
+---
+
+## 🤝 贡献指南
+
+欢迎贡献代码、提出问题或建议！
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 提交 Pull Request
+
+---
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
+
+---
+
+## 👨‍💻 作者
+
+**糯宝喂养记录团队**
+
+---
+
+## 🙏 致谢
+
+感谢以下开源项目：
+- [Vue.js](https://vuejs.org/)
+- [Element Plus](https://element-plus.org/)
+- [ECharts](https://echarts.apache.org/)
+- [Vite](https://vitejs.dev/)
+
+---
+
+<p align="center">
+  Made with ❤️ for new parents
+</p>
